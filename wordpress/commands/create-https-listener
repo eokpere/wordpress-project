@@ -1,0 +1,19 @@
+create https listener
+select the listener tag on your load balance, change the protocol to https, default action to forward(and select your target group),
+select your certificate under default ssl cert(from ACM)
+
+edit the http listener to redirect http traffic to the https 
+
+ssh into one of the webservers, 
+change to root user (sudo su)
+vi /var/www/html/wp-config.php
+copy and paste the code below after "@package wordpress
+save and exit
+
+/* SSL Settings */
+define('FORCE_SSL_ADMIN', true);
+
+// Get true SSL status from AWS load balancer
+if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+  $_SERVER['HTTPS'] = '1';
+}

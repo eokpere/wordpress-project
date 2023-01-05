@@ -1,0 +1,11 @@
+1.	select the region
+2.	create VPC
+3.	enable DNS Host Name in the VPC
+4.	Create Internet Gateway
+5.	attach the IGW to the VPC
+6.	Create the public subnets
+7.	Enable auto assign IP settings
+8.	Create public route table
+9.	Add public route to the public route table
+10.	Associate the public subnets with the public route table
+11.	create the private subnets
